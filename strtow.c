@@ -62,7 +62,7 @@ int count_words(char *str, char *delimiter)
 
 /**
  * strtow - splits a string into words
- * @data: pointer to data structure
+ * @str: pointer to data structure
  * @delimiter: string containing characters that indicate limits
  * Return: a pointer to an array of strings (words)
  */
