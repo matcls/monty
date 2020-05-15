@@ -76,23 +76,35 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 }
 
 /**
-* op_rotl - rotl
+* op_rotl - rotates the stack to the top.
 * @stack: memory stack
 * @line_number: command line number
 */
 void op_rotl(stack_t **stack, unsigned int line_number)
 {
+	stack_t *node = malloc(sizeof(stack_t));
 	stack_t *temp = *stack;
+	stack_t *temp2;
+	int bol = 1;
 
-	while (temp->next && temp->n != 0)
+	if (!node)
 	{
-		if (temp->n > 0 && temp->n <= 127)
-		{
-			printf("%c", temp->n);
-			temp = temp->next;
-		}
+		free_all(bol);
+		errors(3, line_number, NULL);
 	}
-	printf("\n");
 
-	(void)line_number;
+	if (!(*stack))
+		return;
+
+	node->n = temp->n;
+	node->next = NULL;
+	*stack = (*stack)->next;
+	free(temp);
+
+	temp2 = *stack;
+
+	while (temp2->next)
+		temp2 = temp2->next;
+	temp2->next = node;
+	node->prev = temp2;
 }

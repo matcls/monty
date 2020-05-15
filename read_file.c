@@ -72,6 +72,7 @@ void get_op(char *command)
 		{"mod", op_mod},
 		{"pchar", op_pchar},
 		{"pstr", op_pstr},
+		{"rotl", op_rotl},
 		{NULL, NULL},
 	};
 
