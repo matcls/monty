@@ -35,6 +35,10 @@ void errors(int errc, int line, char *str)
 		fprintf(stderr,	"L%d: division by zero\n", line);
 	if (errc == 12)
 		fprintf(stderr,	"L%d: can't mul, stack too short\n", line);
+	if (errc == 13)
+		fprintf(stderr,	"L%d: can't mod, stack too short\n", line);
+	if (errc == 14)
+		fprintf(stderr,	"L%d: division by zero\n", line);
 }
 /**
 * is_number - checks if a string is a number
