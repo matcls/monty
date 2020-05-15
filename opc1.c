@@ -83,7 +83,11 @@ void op_pop(stack_t **stack, unsigned int line_number)
 */
 void op_swap(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
-	line_number = line_number;
-	printf("swap %d\n", line_number);
+	int temp;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		errors(7, line_number, NULL);
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }

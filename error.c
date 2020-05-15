@@ -23,6 +23,8 @@ void errors(int errc, int line, char *str)
 		fprintf(stderr,	"L%d: can't pint, stack empty\n", line);
 	if (errc == 6)
 		fprintf(stderr,	"L%d: can't pop an empty stack\n", line);
+	if (errc == 7)
+		fprintf(stderr,	"L%d: can't swap, stack too short\n", line);
 }
 /**
 * is_number - checks if a string is a number
