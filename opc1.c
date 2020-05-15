@@ -83,10 +83,14 @@ void op_pop(stack_t **stack, unsigned int line_number)
 */
 void op_swap(stack_t **stack, unsigned int line_number)
 {
-	int temp;
+	int temp, bol = 1;
 
 	if (*stack == NULL || (*stack)->next == NULL)
+	{
 		errors(7, line_number, NULL);
+		free_all(bol);
+		exit(EXIT_FAILURE);
+	}
 	temp = (*stack)->n;
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = temp;
