@@ -64,9 +64,18 @@ void op_pint(stack_t **stack, unsigned int line_number)
 */
 void op_pop(stack_t **stack, unsigned int line_number)
 {
-	printf("%d - %d\n", (*stack)->n, line_number);
-}
+	stack_t *node = get_dnodeint_at_index(*stack, 0);
+	int bol = 1;
 
+	if (!node)
+	{
+		errors(6, line_number, NULL);
+		free_all(bol);
+		exit(EXIT_FAILURE);
+	}
+
+	delete_dnodeint_at_index(stack, 0);
+}
 /**
 * op_swap - push a number to stack
 * @stack: memory stack
