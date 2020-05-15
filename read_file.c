@@ -64,11 +64,9 @@ void get_op(char *command)
 		{"pint", op_pint},
 		{"pop", op_pop},
 		{"swap", op_swap},
-		/*
-		*{"add", op_add},
-		*{"nop", op_nop},
-		*{"sub", op_sub},
-		*/
+		{"add", op_add},
+		{"nop", op_nop},
+		{"sub", op_sub},
 		{NULL, NULL},
 	};
 
