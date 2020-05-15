@@ -65,13 +65,18 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
-	while (temp->next && temp->n != 0 && (temp->n > 0 && temp->n <= 127))
+	if (*stack)
 	{
-		printf("%c", temp->n);
-		temp = temp->next;
+		while (temp)
+		{
+			if (temp->n > 0 && temp->n <= 127)
+				printf("%c", temp->n);
+			else
+				break;
+			temp = temp->next;
+		}
 	}
 	printf("\n");
-
 	(void)line_number;
 }
 
@@ -96,6 +101,36 @@ void op_rotl(stack_t **stack, unsigned int line_number)
 		*stack = (*stack)->next;
 		(*stack)->prev = NULL;
 		temp->next->next = NULL;
+	}
+	(void)line_number;
+}
+
+/**
+* op_rotr - rotates the stack to the bottom.
+* @stack: memory stack
+* @line_number: command line number
+*/
+void op_rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+	stack_t *temp = NULL;
+
+	if (*stack && (*stack)->next)
+	{
+		while (current->next)
+		{
+			temp = current;
+			current = current->next;
+		}
+
+		(*stack)->prev = current;
+		current->next = *stack;
+		if (current->prev == *stack)
+			(*stack)->next = NULL;
+		else
+			temp->next = NULL;
+		current->prev = NULL;
+		*stack = current;
 	}
 	(void)line_number;
 }
