@@ -75,5 +75,7 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 		}
 		printf("\n");
 	}
+	printf("\n");
+
 	(void)line_number;
 }
