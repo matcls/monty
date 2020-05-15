@@ -54,3 +54,26 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", temp->n);
 }
+
+/**
+* op_pstr - prints the string starting at the top of the stack,
+* followed by a new line..
+* @stack: memory stack
+* @line_number: command line number
+*/
+void op_pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if ((*stack))
+	{
+		while (temp->next && temp->n != 0)
+		{
+			if (temp->n > 32 && temp->n < 127)
+				printf("%c", temp->n);
+			temp = temp->next;
+		}
+		printf("\n");
+	}
+	(void)line_number;
+}
