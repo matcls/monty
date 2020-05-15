@@ -88,6 +88,15 @@ void op_div(stack_t **stack, unsigned int line_number)
 */
 void op_mul(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	int temp, bol = 1;
+
+	if (*stack == NULL || ((*stack)->prev == NULL && (*stack)->next == NULL))
+	{
+		errors(12, line_number, NULL);
+		free_all(bol);
+		exit(EXIT_FAILURE);
+	}
+	temp = (*stack)->n;
+	op_pop(stack, line_number);
+	(*stack)->n = (*stack)->n * temp;
 }
