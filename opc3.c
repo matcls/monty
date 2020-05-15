@@ -26,3 +26,31 @@ void op_mod(stack_t **stack, unsigned int line_number)
 	op_pop(stack, line_number);
 	(*stack)->n = (*stack)->n % temp;
 }
+
+/**
+* op_pchar - prints the char at the top of the stack,
+* followed by a new line.
+* @stack: memory stack
+* @line_number: command line number
+*/
+void op_pchar(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+	int bol = 1;
+
+	if (!(*stack) || stack == NULL)
+	{
+		errors(16, line_number, NULL);
+		free_all(bol);
+		exit(EXIT_FAILURE);
+	}
+
+	if (temp->n < 32 || temp->n > 127)
+	{
+		errors(15, line_number, NULL);
+		free_all(bol);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%c\n", temp->n);
+}

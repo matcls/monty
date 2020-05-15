@@ -39,6 +39,10 @@ void errors(int errc, int line, char *str)
 		fprintf(stderr,	"L%d: can't mod, stack too short\n", line);
 	if (errc == 14)
 		fprintf(stderr,	"L%d: division by zero\n", line);
+	if (errc == 15)
+		fprintf(stderr,	"L%d: can't pchar, value out of range\n", line);
+	if (errc == 16)
+		fprintf(stderr,	"L%d: can't pchar, stack empty\n", line);
 }
 /**
 * is_number - checks if a string is a number
