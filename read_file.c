@@ -67,6 +67,9 @@ void get_op(char *command)
 		{"add", op_add},
 		{"nop", op_nop},
 		{"sub", op_sub},
+		{"div", op_div},
+		{"mul", op_mul},
+		{"mode", op_mol},
 		{NULL, NULL},
 	};
 

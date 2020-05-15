@@ -54,3 +54,40 @@ void op_sub(stack_t **stack, unsigned int line_number)
 	(*stack)->n = sub;
 }
 
+/**
+* op_div - divides the second top element of the stack
+* by the top element of the stack.
+* @stack: memory stack
+* @line_number: command line number
+*/
+void op_div(stack_t **stack, unsigned int line_number)
+{
+	int temp, bol = 1;
+
+	if (*stack == NULL || ((*stack)->prev == NULL && (*stack)->next == NULL))
+	{
+		errors(10, line_number, NULL);
+		free_all(bol);
+		exit(EXIT_FAILURE);
+	}
+	temp = (*stack)->n;
+	if (temp == 0)
+	{
+		errors(11, line_number, NULL);
+		free_all(bol);
+		exit(EXIT_FAILURE);
+	}
+	op_pop(stack, line_number);
+	(*stack)->n = (*stack)->n / temp;
+}
+/**
+* op_mul - multiplies the second top element of the stack
+* with the top element of the stack.
+* @stack: memory stack
+* @line_number: command line number
+*/
+void op_mul(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
