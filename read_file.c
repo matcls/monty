@@ -29,7 +29,6 @@ void read_file(void)
 			(void)command;
 			get_op(data()->toks[0]);
 		}
-		data()->line++;
 		free_all(bol);
 	}
 	free_all(1);
@@ -112,7 +111,7 @@ void free_stack(stack_t **stack)
 
 data_t *data(void)
 {
-	static data_t global = {NULL, NULL, NULL, NULL, 0, 1, 0};
+	static data_t global = {NULL, NULL, NULL, NULL, 0, 0, 0};
 
 	return (&global);
 }
