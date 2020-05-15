@@ -28,7 +28,8 @@ void op_add(stack_t **stack, unsigned int line_number)
 */
 void op_nop(stack_t **stack, unsigned int line_number)
 {
-
+	(void)stack;
+	(void)line_number;
 }
 
 /**
@@ -38,5 +39,6 @@ void op_nop(stack_t **stack, unsigned int line_number)
 */
 void op_sub(stack_t **stack, unsigned int line_number)
 {
-
+	(void)stack;
+	(void)line_number;
 }
