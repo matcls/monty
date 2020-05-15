@@ -69,13 +69,13 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 	{
 		while (temp->next && temp->n != 0)
 		{
-			if (temp->n > 32 && temp->n < 127)
+			if (temp->n > 32 && temp->n <= 127)
+			{
 				printf("%c", temp->n);
-			temp = temp->next;
+				temp = temp->next;
+			}
 		}
 		printf("\n");
 	}
-	printf("\n");
-
 	(void)line_number;
 }
