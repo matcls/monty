@@ -82,29 +82,20 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 */
 void op_rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node = malloc(sizeof(stack_t));
 	stack_t *temp = *stack;
-	stack_t *temp2;
-	int bol = 1;
-
-	if (!node)
-	{
-		free_all(bol);
-		errors(3, line_number, NULL);
-	}
 
 	if (!(*stack))
 		return;
 
-	node->n = temp->n;
-	node->next = NULL;
-	*stack = (*stack)->next;
-	free(temp);
+	if (*stack && (*stack)->next)
+	{
+		while (temp->next)
+			temp = temp->next;
 
-	temp2 = *stack;
-
-	while (temp2->next)
-		temp2 = temp2->next;
-	temp2->next = node;
-	node->prev = temp2;
+		temp->next = *stack;
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+		temp->next->next = NULL;
+	}
+	(void)line_number;
 }
