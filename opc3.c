@@ -121,22 +121,17 @@ void op_rotr(stack_t **stack, unsigned int line_number)
 	if (!(*stack))
 		return;
 
-	if (*stack && (*stack)->next)
-	{
-		while (current->next)
-		{
-			temp = current;
-			current = current->next;
-		}
+	while (temp->next)
+		temp = temp->next;
 
-		(*stack)->prev = current;
-		current->next = *stack;
-		if (current->prev == *stack)
-			(*stack)->next = NULL;
-		else
-			temp->next = NULL;
-		current->prev = NULL;
-		*stack = current;
-	}
+	current->n = temp->n;
+	current->prev = NULL;
+	temp->prev->next = NULL;
+	free(temp);
+
+	current->next = (*stack);
+	(*stack)->prev = current;
+	(*stack) = current;
+
 	(void)line_number;
 }
