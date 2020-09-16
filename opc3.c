@@ -112,8 +112,11 @@ void op_rotl(stack_t **stack, unsigned int line_number)
 */
 void op_rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
-	stack_t *temp = NULL;
+	stack_t *current = malloc(sizeof(stack_t));
+	stack_t *temp = *stack;
+
+	if (!current)
+		free_dlistint(*stack);
 
 	if (!(*stack))
 		return;
