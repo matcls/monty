@@ -115,6 +115,9 @@ void op_rotr(stack_t **stack, unsigned int line_number)
 	stack_t *current = *stack;
 	stack_t *temp = NULL;
 
+	if (!(*stack))
+		return;
+
 	if (*stack && (*stack)->next)
 	{
 		while (current->next)
