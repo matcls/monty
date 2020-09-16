@@ -116,7 +116,10 @@ void op_rotr(stack_t **stack, unsigned int line_number)
 	stack_t *temp = *stack;
 
 	if (!current)
+	{
 		free_dlistint(*stack);
+		errors(3, line_number, NULL);
+	}
 
 	if (!(*stack))
 		return;
